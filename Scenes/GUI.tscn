@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Theme.tres" type="Theme" id=1]
 [ext_resource path="res://GFX/Interface/PNG/glassPanel_cornerTL.png" type="Texture" id=2]
 [ext_resource path="res://GFX/Interface/PNG/dot_shadow.png" type="Texture" id=3]
 [ext_resource path="res://GFX/Interface/PNG/dotWhite.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/SuspicionMeter.gd" type="Script" id=5]
 
 [node name="GUI" type="CanvasLayer"]
 
@@ -47,10 +48,13 @@ margin_right = 84.0
 margin_bottom = 35.0
 text = "Suspicion"
 
-[node name="TextureProgress" type="TextureProgress" parent="Control/NinePatchRect/CenterContainer/HBoxContainer"]
+[node name="SuspicionMeter" type="TextureProgress" parent="Control/NinePatchRect/CenterContainer/HBoxContainer" groups=[
+"suspicion_meter",
+]]
 margin_left = 88.0
 margin_right = 112.0
 margin_bottom = 35.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 fill_mode = 4
+script = ExtResource( 5 )
