@@ -1,8 +1,7 @@
 extends "res://Scripts/PlayerDetection.gd"
 
 
-onready var navigation = get_tree().get_root().find_node("Navigation2D", true, false)
-onready var destinations = navigation.get_node("Destinations")
+
 
 var motion
 var possible_destinations
@@ -10,6 +9,9 @@ var path
 
 export var minimum_destination_distance = 5
 export var walk_speed = 0.5
+
+onready var navigation = get_tree().get_root().find_node("Navigation2D", true, false)
+onready var destinations = navigation.get_node("Destinations")
 
 
 func _ready():

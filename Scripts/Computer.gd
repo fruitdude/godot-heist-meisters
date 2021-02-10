@@ -9,13 +9,15 @@ export var _combination_length : int = 4
 export var lock_group = "Unset"
 
 onready var _computer_light : Light2D = $ComputerLight
+onready var _label : Label = $Label
 
 
 func _ready():
 	GameEvents.connect("interact", self, "_on_interact")
 	generate_combination()
-	print(combination)
 	emit_signal("combination", combination, lock_group)
+	_label.rect_rotation = -rotation_degrees
+	_label.text = lock_group
 	
 
 func _on_interact():
