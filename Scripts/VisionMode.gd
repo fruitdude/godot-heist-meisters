@@ -1,7 +1,7 @@
 extends CanvasModulate
 
 
-const DARK = Color("3d4172")
+const DARK = Color("070917")
 const NIGHTVISION = Color("348f4f")
 
 onready var nightvision_timer = $NightvisionTimer
