@@ -30,6 +30,8 @@ func nightvision_mode():
 	audiostreamplayer.play()
 	nightvision_timer.start()
 	nightvision_cooldown_timer.start()
+	get_tree().call_group("lights", "hide")
+	get_tree().call_group("labels", "show")
 	
 
 func _on_NightVisionTimer_timeout():
@@ -43,6 +45,8 @@ func dark_mode():
 	color = DARK
 	audiostreamplayer.stream = load("res://SFX/nightvision_off.wav")
 	audiostreamplayer.play()
+	get_tree().call_group("lights", "show") 
+	get_tree().call_group("labels", "hide") 
 
 
 func _on_NightvisionCooldownTimer_timeout():

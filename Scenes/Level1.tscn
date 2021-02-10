@@ -819,7 +819,6 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [node name="Level1" type="Node2D"]
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
-editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
 tile_set = SubResource( 105 )
@@ -870,6 +869,7 @@ rotation = 1.5708
 lock_group = "1"
 
 [node name="Doors" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Door" parent="Doors" instance=ExtResource( 4 )]
 position = Vector2( 416.233, 159.555 )
