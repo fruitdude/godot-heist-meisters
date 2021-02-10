@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://GFX/PNG/Tiles/tile_130.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/HumanOccluder.tres" type="OccluderPolygon2D" id=5]
 [ext_resource path="res://Scenes/BoxOccluder.tres" type="OccluderPolygon2D" id=6]
+[ext_resource path="res://Scenes/HumanCollision.tres" type="Shape2D" id=7]
+[ext_resource path="res://Scenes/boxCollision.tres" type="Shape2D" id=8]
+[ext_resource path="res://Scenes/Theme.tres" type="Theme" id=9]
 
 [node name="Player" index="0" instance=ExtResource( 1 )]
 collision_mask = 14
@@ -13,10 +16,14 @@ script = ExtResource( 2 )
 _sprite = NodePath("Sprite")
 _light_occluder = NodePath("LightOccluder2D")
 _light = NodePath("Light2D")
+_collision = NodePath("CollisionShape2D")
+_timer = NodePath("Timer")
 _player_sprite = ExtResource( 3 )
 _box_sprite = ExtResource( 4 )
 _human_occluder = ExtResource( 5 )
 _box_occluder = ExtResource( 6 )
+_human_collision = ExtResource( 7 )
+_box_collision = ExtResource( 8 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
@@ -24,3 +31,14 @@ texture = ExtResource( 3 )
 [node name="Light2D" type="Light2D" parent="." index="3"]
 texture = ExtResource( 3 )
 energy = 0.75
+
+[node name="Timer" type="Timer" parent="." index="4"]
+
+[node name="DisguiseLabel" type="Label" parent="." index="5"]
+margin_left = 30.0
+margin_top = -17.9553
+margin_right = 70.0
+margin_bottom = 17.0447
+theme = ExtResource( 9 )
+text = "0.00"
+[connection signal="timeout" from="Timer" to="." method="_reveal"]
