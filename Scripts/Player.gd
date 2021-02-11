@@ -25,7 +25,6 @@ func _ready():
 	_timer.wait_time = _disguise_duration
 	get_tree().call_group("DisguiseDisplay", "update_disguises", _number_of_disguises)
 	_reveal()
-	print(_number_of_disguises)
 
 
 func _process(delta):
@@ -65,16 +64,13 @@ func _input(event):
 		_toggle_disguise()
 		
 		
-		
-		
 func _toggle_disguise():
 	if _disguised:
 		_reveal()
 	elif _number_of_disguises > 0:
 		_disguise()
 		
-			
-		
+		 
 func _reveal():
 	_sprite.texture = _player_sprite
 	_light.texture = _player_sprite
@@ -98,4 +94,19 @@ func _disguise():
 	$DisguiseLabel.show()
 	_number_of_disguises -= 1
 	get_tree().call_group("DisguiseDisplay", "update_disguises", _number_of_disguises)
+	
+	
+func collect_loot():
+	var loot : Node = Node.new()
+	loot.set_name("Loot")
+	add_child(loot)
+	get_tree().call_group("LootDisplay", "_collect_loot")
+	
+	
+	
+	
+	
+	
+	
+	
 	
