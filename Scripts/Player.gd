@@ -7,7 +7,7 @@ var _velocity_multiplier : float = 1.0
 
 export var _disguise_slowdown : float = 0.25
 export var _disguise_duration : float = 5.0
-export var _number_of_disguised : int = 3
+export var _number_of_disguises : int = 3
 export(NodePath) onready var _sprite = get_node(_sprite) as Sprite
 export(NodePath) onready var _light_occluder = get_node(_light_occluder) as LightOccluder2D
 export(NodePath) onready var _light = get_node(_light) as Light2D
@@ -23,6 +23,9 @@ export(Resource) var _box_collision = _box_collision as Shape
 
 func _ready():
 	_timer.wait_time = _disguise_duration
+	get_tree().call_group("DisguiseDisplay", "update_disguises", _number_of_disguises)
+	_reveal()
+	print(_number_of_disguises)
 
 
 func _process(delta):
@@ -62,12 +65,15 @@ func _input(event):
 		_toggle_disguise()
 		
 		
+		
+		
 func _toggle_disguise():
 	if _disguised:
 		_reveal()
-	elif _number_of_disguised > 0:
+	elif _number_of_disguises > 0:
 		_disguise()
 		
+			
 		
 func _reveal():
 	_sprite.texture = _player_sprite
@@ -90,4 +96,6 @@ func _disguise():
 	_collision.shape = _box_collision
 	_timer.start()
 	$DisguiseLabel.show()
-	_number_of_disguised -= 1
+	_number_of_disguises -= 1
+	get_tree().call_group("DisguiseDisplay", "update_disguises", _number_of_disguises)
+	
